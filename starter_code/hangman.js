@@ -1,7 +1,8 @@
 var hangman;
 
 function Hangman() {
-	this.words = ['IRONHACK', 'NODEJS', 'JAVASCRIPT', 'METEOR', 'ANGULAR', 'BARCELONA', 'MADRID', 'MIAMI', 'HTML'],
+	// this.words = ['IRONHACK', 'NODEJS', 'JAVASCRIPT', 'METEOR', 'ANGULAR', 'BARCELONA', 'MADRID', 'MIAMI', 'HTML'],
+	this.words = ['TESTE'],
 	this.secretWord = '',
 	this.letters = [],
 	this.guessedLetter = '',
@@ -43,6 +44,8 @@ Hangman.prototype.checkClickedLetters = function (key) {
 
 Hangman.prototype.addCorrectLetter = function (i) {
 	this.guessedLetter += this.secretWord[i].toUpperCase();
+
+	hangmanCanvas.writeCorrectLetter(i);
 
 	this.checkWinner();
 };

@@ -14,25 +14,33 @@ HangmanCanvas.prototype.createBoard = function () {
 
 HangmanCanvas.prototype.drawLines = function () {
 	var x = 350;
+	var y = 600;
 	var lineWidth = 50;
 	var space = 20;
 
 	for(var i = 0; i < hangman.secretWord.length; i++) {
 		this.ctx.beginPath();
-		this.ctx.moveTo(x, 700);
-		this.ctx.lineTo(x + lineWidth, 700);
+		this.ctx.moveTo(x, y);
+		this.ctx.lineTo(x + lineWidth, y);
 		this.ctx.stroke();
 		this.ctx.stroke();
 		this.ctx.closePath();
 
 		x += lineWidth + space;
 
-		this.ctx.moveTo(x, 700);
+		this.ctx.moveTo(x, y);
 	}
 };
 
 HangmanCanvas.prototype.writeCorrectLetter = function (index) {
+	var x = 375 + (50 * index) + (20 * index);
+	var y = 590;
 
+	this.ctx.beginPath();
+	this.ctx.font = '48px serif';
+	this.ctx.textAlign = 'center';
+	this.ctx.fillText(hangman.secretWord[index], x, y);
+	this.ctx.closePath();
 };
 
 HangmanCanvas.prototype.writeWrongLetter = function (letter, errorsLeft) {
