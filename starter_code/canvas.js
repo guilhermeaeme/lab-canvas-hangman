@@ -44,7 +44,16 @@ HangmanCanvas.prototype.writeCorrectLetter = function (index) {
 };
 
 HangmanCanvas.prototype.writeWrongLetter = function (letter, errorsLeft) {
+	var index = 10 - errorsLeft;
 
+	var x = 375 + (50 * index);
+	var y = 200;
+
+	this.ctx.beginPath();
+	this.ctx.font = '48px serif';
+	this.ctx.textAlign = 'center';
+	this.ctx.fillText(letter, x, y);
+	this.ctx.closePath();
 };
 
 HangmanCanvas.prototype.drawHangman = function (shape) {

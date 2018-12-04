@@ -35,7 +35,7 @@ Hangman.prototype.checkClickedLetters = function (key) {
 				}
 			}
 		} else {
-			this.addWrongLetter(indexOfLetter);
+			this.addWrongLetter(keyUpper);
 		}
 	}
 
@@ -52,6 +52,8 @@ Hangman.prototype.addCorrectLetter = function (i) {
 
 Hangman.prototype.addWrongLetter = function (letter) {
 	this.errorsLeft--;
+
+	hangmanCanvas.writeWrongLetter(letter, this.errorsLeft);
 
 	this.checkGameOver();
 };
