@@ -1,8 +1,8 @@
 var hangman;
 
 function Hangman() {
-	// this.words = ['IRONHACK', 'NODEJS', 'JAVASCRIPT', 'METEOR', 'ANGULAR', 'BARCELONA', 'MADRID', 'MIAMI', 'HTML'],
-	this.words = ['TESTE'],
+	this.words = ['IRONHACK', 'NODEJS', 'JAVASCRIPT', 'METEOR', 'ANGULAR', 'BARCELONA', 'MADRID', 'MIAMI', 'HTML'],
+	// this.words = ['TESTE'],
 	this.secretWord = '',
 	this.letters = [],
 	this.guessedLetter = '',
