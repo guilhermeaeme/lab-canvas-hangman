@@ -62,7 +62,7 @@ Hangman.prototype.checkGameOver = function () {
 	let result = this.errorsLeft == 0;
 
 	if(result) {
-		console.log('GAME OVER!');
+		hangmanCanvas.gameOver();
 	}
 
 	return result;
@@ -72,7 +72,7 @@ Hangman.prototype.checkWinner = function () {
 	let result = this.guessedLetter.length == this.secretWord.length;
 
 	if(result) {
-		console.log('YOU WON!');
+		hangmanCanvas.winner();
 	}
 
 	return result;
