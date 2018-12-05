@@ -45,7 +45,9 @@ Hangman.prototype.checkClickedLetters = function (key) {
 Hangman.prototype.addCorrectLetter = function (i) {
 	this.guessedLetter += this.secretWord[i].toUpperCase();
 
-	hangmanCanvas.writeCorrectLetter(i);
+	if(hangmanCanvas) {
+		hangmanCanvas.writeCorrectLetter(i);
+	}
 
 	this.checkWinner();
 };
@@ -53,7 +55,9 @@ Hangman.prototype.addCorrectLetter = function (i) {
 Hangman.prototype.addWrongLetter = function (letter) {
 	this.errorsLeft--;
 
-	hangmanCanvas.writeWrongLetter(letter, this.errorsLeft);
+	if(hangmanCanvas) {
+		hangmanCanvas.writeWrongLetter(letter, this.errorsLeft);
+	}
 
 	this.checkGameOver();
 };
@@ -61,7 +65,7 @@ Hangman.prototype.addWrongLetter = function (letter) {
 Hangman.prototype.checkGameOver = function () {
 	let result = this.errorsLeft == 0;
 
-	if(result) {
+	if(result && hangmanCanvas) {
 		hangmanCanvas.gameOver();
 	}
 
@@ -71,7 +75,7 @@ Hangman.prototype.checkGameOver = function () {
 Hangman.prototype.checkWinner = function () {
 	let result = this.guessedLetter.length == this.secretWord.length;
 
-	if(result) {
+	if(result && hangmanCanvas) {
 		hangmanCanvas.winner();
 	}
 
@@ -84,7 +88,9 @@ document.getElementById('start-game-button').onclick = function () {
 
 	hangman.getWord();
 
-	hangmanCanvas.createBoard();
+	if(hangmanCanvas) {
+		hangmanCanvas.createBoard();
+	}
 };
 
 
