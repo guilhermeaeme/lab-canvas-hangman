@@ -15,27 +15,29 @@ Hangman.prototype.getWord = function () {
 };
 
 Hangman.prototype.checkIfLetter = function (keyCode) {
-	return (this.errorsLeft > 0 && this.guessedLetter.length < this.secretWord.length && keyCode >= 65 && keyCode <= 90);
+	return (keyCode >= 65 && keyCode <= 90);
 };
 
 Hangman.prototype.checkClickedLetters = function (key) {
 	let keyUpper = key.toUpperCase();
 	let result = (this.letters.indexOf(keyUpper) == -1);
 
-	if(result) {
-		this.letters.push(keyUpper);
+	if(this.errorsLeft > 0 && this.guessedLetter.length < this.secretWord.length) {
+		if(result) {
+			this.letters.push(keyUpper);
 
-		let indexOfLetter = this.secretWord.indexOf(keyUpper);
-		if(indexOfLetter >= 0) {
-			while(indexOfLetter > -1) {
-				indexOfLetter = this.secretWord.indexOf(keyUpper, indexOfLetter)
-				if(indexOfLetter > -1) {
-					this.addCorrectLetter(indexOfLetter);
-					indexOfLetter++;
+			let indexOfLetter = this.secretWord.indexOf(keyUpper);
+			if(indexOfLetter >= 0) {
+				while(indexOfLetter > -1) {
+					indexOfLetter = this.secretWord.indexOf(keyUpper, indexOfLetter)
+					if(indexOfLetter > -1) {
+						this.addCorrectLetter(indexOfLetter);
+						indexOfLetter++;
+					}
 				}
+			} else {
+				this.addWrongLetter(keyUpper);
 			}
-		} else {
-			this.addWrongLetter(keyUpper);
 		}
 	}
 
