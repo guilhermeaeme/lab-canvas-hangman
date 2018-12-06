@@ -57,6 +57,14 @@ HangmanCanvas.prototype.writeWrongLetter = function (letter, errorsLeft) {
 	this.drawHangman(errorsLeft);
 };
 
+HangmanCanvas.prototype.drawLine = function (x1, y1, x2, y2) {
+	this.ctx.beginPath();
+    this.ctx.moveTo(x1, y1);
+    this.ctx.lineTo(x2, y2);
+	this.ctx.stroke();
+	this.ctx.closePath();
+};
+
 HangmanCanvas.prototype.drawHangman = function (shape) {
 	switch(shape) {
 	    case 9:
@@ -69,25 +77,13 @@ HangmanCanvas.prototype.drawHangman = function (shape) {
 			this.ctx.closePath();
 	        break;
 	    case 8:
-	        this.ctx.beginPath();
-	        this.ctx.moveTo(250, 550);
-	        this.ctx.lineTo(250, 150);
-			this.ctx.stroke();
-			this.ctx.closePath();
+			this.drawLine(250, 550, 250, 150);
 	        break;
 	    case 7:
-	    	this.ctx.beginPath();
-	        this.ctx.moveTo(250, 150);
-	        this.ctx.lineTo(400, 150);
-			this.ctx.stroke();
-			this.ctx.closePath();
+			this.drawLine(250, 150, 400, 150);
 	        break;
 	    case 6:
-	    	this.ctx.beginPath();
-	        this.ctx.moveTo(400, 150);
-	        this.ctx.lineTo(400, 175);
-			this.ctx.stroke();
-			this.ctx.closePath();
+			this.drawLine(400, 150, 400, 175);
 	        break;
 	    case 5:
 	    	this.ctx.beginPath();
@@ -96,39 +92,19 @@ HangmanCanvas.prototype.drawHangman = function (shape) {
 			this.ctx.closePath();
 	        break;
        	case 4:
-	    	this.ctx.beginPath();
-	        this.ctx.moveTo(400, 275);
-	        this.ctx.lineTo(400, 400);
-			this.ctx.stroke();
-			this.ctx.closePath();
+			this.drawLine(400, 275, 400, 400);
 	        break;
 	    case 3:
-	    	this.ctx.beginPath();
-	        this.ctx.moveTo(400, 400);
-	        this.ctx.lineTo(450, 460);
-			this.ctx.stroke();
-			this.ctx.closePath();
+			this.drawLine(400, 400, 450, 460);
 	        break;
 	    case 2:
-	    	this.ctx.beginPath();
-	        this.ctx.moveTo(400, 400);
-	        this.ctx.lineTo(350, 460);
-			this.ctx.stroke();
-			this.ctx.closePath();
+			this.drawLine(400, 400, 350, 460);
 	        break;
 	    case 1:
-	    	this.ctx.beginPath();
-	        this.ctx.moveTo(400, 300);
-	        this.ctx.lineTo(450, 360);
-			this.ctx.stroke();
-			this.ctx.closePath();
+			this.drawLine(400, 300, 450, 360);
 	        break;
 	    case 0:
-	    	this.ctx.beginPath();
-	        this.ctx.moveTo(400, 300);
-	        this.ctx.lineTo(350, 360);
-			this.ctx.stroke();
-			this.ctx.closePath();
+			this.drawLine(400, 300, 350, 360);
 	        break;
 	    default:
 	        //
