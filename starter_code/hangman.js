@@ -15,7 +15,7 @@ Hangman.prototype.getWord = function () {
 };
 
 Hangman.prototype.checkIfLetter = function (keyCode) {
-	return (keyCode >= 65 && keyCode <= 90);
+	return (this.errorsLeft > 0 && this.guessedLetter.length < this.secretWord.length && keyCode >= 65 && keyCode <= 90);
 };
 
 Hangman.prototype.checkClickedLetters = function (key) {

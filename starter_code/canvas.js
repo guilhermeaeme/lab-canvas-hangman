@@ -136,11 +136,25 @@ HangmanCanvas.prototype.drawHangman = function (shape) {
 };
 
 HangmanCanvas.prototype.gameOver = function () {
-	console.log('GAME OVER!');
+	var img = new Image();
+	img.onload = function(){
+		var x = (hangmanCanvas.canvas.width/2) - (this.width/2);
+		var y = (hangmanCanvas.canvas.height/2) - (this.height/2);
+
+		hangmanCanvas.ctx.drawImage(img, x, y);
+	};
+	img.src = 'images/gameover.png';
 };
 
 HangmanCanvas.prototype.winner = function () {
-	console.log('YOU WON!');
+	var img = new Image();
+	img.onload = function(){
+		var x = (hangmanCanvas.canvas.width/2) - (this.width/2);
+		var y = (hangmanCanvas.canvas.height/2) - (this.height/2);
+
+		hangmanCanvas.ctx.drawImage(img, x, y);
+	};
+	img.src = 'images/awesome.png';
 };
 
 hangmanCanvas = new HangmanCanvas();
