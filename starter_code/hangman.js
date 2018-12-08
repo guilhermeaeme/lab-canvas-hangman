@@ -4,6 +4,7 @@ function Hangman() {
 	this.words = ['IRONHACK', 'NODEJS', 'JAVASCRIPT', 'METEOR', 'ANGULAR', 'BARCELONA', 'MADRID', 'MIAMI', 'HTML'],
 	// this.words = ['TESTE'],
 	this.secretWord = '',
+	this.placeholder = '',
 	this.letters = [],
 	this.guessedLetter = '',
 	this.errorsLeft = 10
@@ -11,6 +12,10 @@ function Hangman() {
 
 Hangman.prototype.getWord = function () {
 	this.secretWord = this.words[Math.floor(Math.random() * this.words.length)]
+
+	this.placeholder = "_ ".repeat(this.secretWord.length);
+	console.log(this.placeholder);
+
 	return this.secretWord;
 };
 
@@ -46,6 +51,21 @@ Hangman.prototype.checkClickedLetters = function (key) {
 
 Hangman.prototype.addCorrectLetter = function (i) {
 	this.guessedLetter += this.secretWord[i].toUpperCase();
+
+	var newPlaceholder = [];
+	var placeholderArray = this.placeholder.split(" ");
+	for(j = 0; j < placeholderArray.length; j++) {
+		if(j == i) {
+			newPlaceholder.push(this.secretWord[i].toUpperCase());
+		} else if(placeholderArray[j] !== "_") {
+			newPlaceholder.push(placeholderArray[j]);
+		} else {
+			newPlaceholder.push("_");
+		}
+	}
+
+	this.placeholder = newPlaceholder.join(" ");
+	console.log(this.placeholder);
 
 	if(hangmanCanvas) {
 		hangmanCanvas.writeCorrectLetter(i);
